@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="truechange.tcseatsiochart.TcSeatsioChart" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Tc Seatsio Chart</name>
+    <description>My widget description</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="General">
+            <property key="workspace_key" type="expression" required="true">
+                <caption>Workspace Key</caption>
+                <description>Sample text input</description>
+                <returnType type="String" />
+            </property>
+            <property key="event_key" type="expression" required="true">
+                <caption>Event Key</caption>
+                <description>Sample text input</description>   
+                <returnType type="String" />             
+            </property>
+            <property key="selectedSeats" type="attribute" required="true" onChange="onChange">
+                <caption>Selected Seats attribute</caption>
+                <description>Todo!</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+        </propertyGroup>  
+        <propertyGroup caption="Events">
+            <property key="onChange" type="action" required="false">
+                <caption>On Change action</caption>
+                <description>Action to trigger when selected seats are changed</description>
+            </property>
+        </propertyGroup>    
+    </properties>
+</widget>
