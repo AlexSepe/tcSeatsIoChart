@@ -18,6 +18,11 @@
                 <description>Sample text input</description>   
                 <returnType type="String" />             
             </property>
+            <property key="holdToken" type="expression" required="true">
+                <caption>holdToken value</caption>
+                <description>Sample text input</description>   
+                <returnType type="String" />             
+            </property>
             <property key="pricing" type="expression" required="true">
                 <caption>Price array list </caption>
                 <description>Sample text input</description>   

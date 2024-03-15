@@ -25,7 +25,6 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
 
     private updateSelectedSeats(): void {
         const chartCast = this.chart as SeatingChart;
-        // let selectedList2: SelectableObjectProps[];
         if (chartCast.listSelectedObjects) {
             chartCast
                 .listSelectedObjects()
@@ -56,7 +55,7 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
         const selectedObjects = chartCast.selectedObjects;
         console.log("updateSelectedSeats -> selectedObjects:: ", selectedObjects);
 
-        this.props.selectedSeats.setValue(selectedObjects.toString());
+        // this.props.selectedSeats.setValue(selectedObjects.toString());
     }
     private onObjectSelected(object: SelectableObjectProps, selectedTicketType: TicketTypeJson): void {
         console.log("onObjectSelected -> object:: ", object, " selectedTicketType::", selectedTicketType);
@@ -69,52 +68,10 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
     }
 
     render(): ReactNode {
-        // const pricing: Pricing = [
-        //     { category: "1", price: 30 },
-        //     { category: "2", price: 40 }
-        // ];
-
-        // const pricing: Pricing = [
-        //     {
-        //       category: 1,
-        //       ticketTypes: [
-        //         {
-        //           ticketType: "adult",
-        //           price: 30,
-        //           label: "For adults",
-        //           description: "Includes hot meal and a drink"
-        //         },
-        //         {
-        //           ticketType: "child",
-        //           price: 20,
-        //           label: "For children",
-        //           description: "Includes burger and fries"
-        //         }
-        //       ]
-        //     },
-        //     {
-        //       category: 2,
-        //       ticketTypes: [
-        //         {
-        //           ticketType: "adult",
-        //           price: 40,
-        //           label: "For adults",
-        //           description: "Includes hot meal and a drink"
-        //         },
-        //         {
-        //           ticketType: "child",
-        //           price: 30,
-        //           label: "For children",
-        //           description: "Includes burger and fries"
-        //         }
-        //       ]
-        //     },
-        //     { category: 3, price: 50 }
-        //   ];
-
         const pricingString = this.props.pricing.value || "[]";
         const workspaceKey = this.props.workspace_key.value || "workspace_key_undefined";
         const event = this.props.event_key.value || "event_key_undefined";
+        const holdToken = this.props.holdToken.value || "";
 
         const pricing = JSON.parse(pricingString);
         console.log("render -> workspaceKey:: ", workspaceKey, " event::", event, " pricing::", pricing);
@@ -131,6 +88,8 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
                 onChartRendered={createdChart => {
                     this.chart = createdChart;
                 }}
+                session="continue"
+                holdToken={holdToken}
                 onObjectSelected={this.onObjectSelectedHandle}
                 onObjectDeselected={this.onObjectDeselectedHandle}
             />
