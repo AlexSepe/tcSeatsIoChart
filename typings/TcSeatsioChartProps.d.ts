@@ -13,7 +13,9 @@ export interface TcSeatsioChartContainerProps {
     tabIndex?: number;
     workspace_key: DynamicValue<string>;
     event_key: DynamicValue<string>;
+    pricing: DynamicValue<string>;
     selectedSeats: EditableValue<string>;
+    selectedObjsList: EditableValue<string>;
 }
 
 export interface TcSeatsioChartPreviewProps {
@@ -27,6 +29,8 @@ export interface TcSeatsioChartPreviewProps {
     readOnly: boolean;
     workspace_key: string;
     event_key: string;
+    pricing: string;
     selectedSeats: string;
+    selectedObjsList: string;
     onChange: {} | null;
 }

@@ -18,8 +18,20 @@
                 <description>Sample text input</description>   
                 <returnType type="String" />             
             </property>
+            <property key="pricing" type="expression" required="true">
+                <caption>Price array list </caption>
+                <description>Sample text input</description>   
+                <returnType type="String" />             
+            </property>
             <property key="selectedSeats" type="attribute" required="true" onChange="onChange">
                 <caption>Selected Seats attribute</caption>
+                <description>Todo!</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="selectedObjsList" type="attribute" required="true" onChange="onChange">
+                <caption>Selected Seats Object attribute</caption>
                 <description>Todo!</description>
                 <attributeTypes>
                     <attributeType name="String"/>
