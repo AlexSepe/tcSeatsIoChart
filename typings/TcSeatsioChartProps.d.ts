@@ -4,7 +4,9 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { DynamicValue, EditableValue } from "mendix";
+import { ActionValue, DynamicValue, EditableValue } from "mendix";
+
+export type CategoryFiltersSortByEnum = "none" | "name" | "price" | "priceDescending";
 
 export interface TcSeatsioChartContainerProps {
     name: string;
@@ -15,8 +17,12 @@ export interface TcSeatsioChartContainerProps {
     event_key: DynamicValue<string>;
     holdToken: DynamicValue<string>;
     pricing: DynamicValue<string>;
-    selectedSeats: EditableValue<string>;
     selectedObjsList: EditableValue<string>;
+    categoryFiltersEnabled: boolean;
+    categoryFiltersMultiSelect: boolean;
+    categoryFiltersZoomOnSelect: boolean;
+    categoryFiltersSortBy: CategoryFiltersSortByEnum;
+    onChange?: ActionValue;
 }
 
 export interface TcSeatsioChartPreviewProps {
@@ -32,7 +38,10 @@ export interface TcSeatsioChartPreviewProps {
     event_key: string;
     holdToken: string;
     pricing: string;
-    selectedSeats: string;
     selectedObjsList: string;
+    categoryFiltersEnabled: boolean;
+    categoryFiltersMultiSelect: boolean;
+    categoryFiltersZoomOnSelect: boolean;
+    categoryFiltersSortBy: CategoryFiltersSortByEnum;
     onChange: {} | null;
 }

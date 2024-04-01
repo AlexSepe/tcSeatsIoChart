@@ -49,6 +49,10 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
 
                     const selectedObjsListJson = JSON.stringify(valuesMap);
                     this.props.selectedObjsList.setValue(selectedObjsListJson);
+
+                    if (this.props.onChange) {
+                        this.props.onChange.execute();
+                    }
                 });
         }
 
@@ -76,6 +80,13 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
         const pricing = JSON.parse(pricingString);
         console.log("render -> workspaceKey:: ", workspaceKey, " event::", event, " pricing::", pricing);
 
+        const categoryFilterOptions = {
+            enabled: this.props.categoryFiltersEnabled,
+            multiSelect: this.props.categoryFiltersMultiSelect,
+            zoomOnSelect: this.props.categoryFiltersZoomOnSelect,
+            sortBy: this.props.categoryFiltersSortBy
+        };
+
         return (
             <SeatsioSeatingChart
                 workspaceKey={workspaceKey}
@@ -88,7 +99,8 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
                 onChartRendered={createdChart => {
                     this.chart = createdChart;
                 }}
-                session="continue"
+                session="manual"
+                categoryFilter={categoryFilterOptions}
                 holdToken={holdToken}
                 onObjectSelected={this.onObjectSelectedHandle}
                 onObjectDeselected={this.onObjectDeselectedHandle}

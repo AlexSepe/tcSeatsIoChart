@@ -1,11 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<widget id="truechange.tcseatsiochart.TcSeatsioChart" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Web"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="truechange.tcseatsiochart.TcSeatsioChart"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
     <name>Tc Seatsio Chart</name>
     <description>My widget description</description>
-    <icon/>
+    <icon />
     <properties>
         <propertyGroup caption="General">
             <property key="workspace_key" type="expression" required="true">
@@ -15,39 +21,57 @@
             </property>
             <property key="event_key" type="expression" required="true">
                 <caption>Event Key</caption>
-                <description>Sample text input</description>   
-                <returnType type="String" />             
+                <description>Sample text input</description>
+                <returnType type="String" />
             </property>
             <property key="holdToken" type="expression" required="true">
                 <caption>holdToken value</caption>
-                <description>Sample text input</description>   
-                <returnType type="String" />             
+                <description>Sample text input</description>
+                <returnType type="String" />
             </property>
             <property key="pricing" type="expression" required="true">
-                <caption>Price array list </caption>
-                <description>Sample text input</description>   
-                <returnType type="String" />             
+                <caption>Price array list</caption>
+                <description>Sample text input</description>
+                <returnType type="String" />
             </property>
-            <property key="selectedSeats" type="attribute" required="true" onChange="onChange">
-                <caption>Selected Seats attribute</caption>
-                <description>Todo!</description>
-                <attributeTypes>
-                    <attributeType name="String"/>
-                </attributeTypes>
-            </property>
-            <property key="selectedObjsList" type="attribute" required="true" onChange="onChange">
+            <property key="selectedObjsList" type="attribute" required="true">
                 <caption>Selected Seats Object attribute</caption>
                 <description>Todo!</description>
                 <attributeTypes>
-                    <attributeType name="String"/>
+                    <attributeType name="String" />
                 </attributeTypes>
             </property>
-        </propertyGroup>  
+        </propertyGroup>
+        <propertyGroup caption="Category Filters">
+            <property key="categoryFiltersEnabled" type="boolean" defaultValue="true">
+                <caption>Show category filters?</caption>
+                <description>If true, the category filter will be visible.</description>
+            </property>
+            <property key="categoryFiltersMultiSelect" type="boolean" defaultValue="true">
+                <caption>Allow multiSelect?</caption>
+                <description>If true, multiple categories can be selected at once.</description>
+            </property>
+            <property key="categoryFiltersZoomOnSelect" type="boolean" defaultValue="true">
+                <caption>Zoom on Select?</caption>
+                <description>If true, the chart will zoom in or out to fit in the viewport the filtered objects.</description>
+            </property>
+            <property key="categoryFiltersSortBy" type="enumeration" defaultValue="name">
+                <caption>Sort by</caption>
+                <description>Sort categories by property, or use `none` for the order they are defined on the chart.</description>
+                <enumerationValues>
+                    <enumerationValue key="none">None</enumerationValue>
+                    <enumerationValue key="name">Name</enumerationValue>
+                    <enumerationValue key="price">Price</enumerationValue>
+                    <enumerationValue key="priceDescending">Price Descending</enumerationValue>
+                </enumerationValues>
+            </property>
+        </propertyGroup>
+
         <propertyGroup caption="Events">
             <property key="onChange" type="action" required="false">
                 <caption>On Change action</caption>
                 <description>Action to trigger when selected seats are changed</description>
             </property>
-        </propertyGroup>    
+        </propertyGroup>
     </properties>
 </widget>
