@@ -42,6 +42,30 @@
                 </attributeTypes>
             </property>
         </propertyGroup>
+
+        <propertyGroup caption="Custom Built-in texts">
+            <property key="dynamicDataSource" type="datasource" required="false" isList="true">
+                <caption>Data source</caption>
+                <description>
+                    DataSource for build-in texts see:
+                    https://support.seats.io/en/articles/2074430-translating-embedded-floor-plans-i18n
+                </description>
+            </property>
+            <property key="MessageKeyAttribute" type="attribute" required="false" dataSource="dynamicDataSource">
+                <caption>Message Key</caption>
+                <description>Message Key Value.</description>
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+            <property key="MessageValueAttribute" type="attribute" required="false" dataSource="dynamicDataSource">
+                <caption>Message Value</caption>
+                <description>Message Value .</description>
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+        </propertyGroup>
         <propertyGroup caption="Category Filters">
             <property key="categoryFiltersEnabled" type="boolean" defaultValue="true">
                 <caption>Show category filters?</caption>
@@ -53,11 +77,15 @@
             </property>
             <property key="categoryFiltersZoomOnSelect" type="boolean" defaultValue="true">
                 <caption>Zoom on Select?</caption>
-                <description>If true, the chart will zoom in or out to fit in the viewport the filtered objects.</description>
+                <description>
+                    If true, the chart will zoom in or out to fit in the viewport the filtered objects.
+                </description>
             </property>
             <property key="categoryFiltersSortBy" type="enumeration" defaultValue="name">
                 <caption>Sort by</caption>
-                <description>Sort categories by property, or use `none` for the order they are defined on the chart.</description>
+                <description>
+                    Sort categories by property, or use `none` for the order they are defined on the chart.
+                </description>
                 <enumerationValues>
                     <enumerationValue key="none">None</enumerationValue>
                     <enumerationValue key="name">Name</enumerationValue>
