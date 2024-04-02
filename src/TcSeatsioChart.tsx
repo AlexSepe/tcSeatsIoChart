@@ -1,6 +1,7 @@
 "use client";
 
 import { Component, ReactNode, createElement } from "react";
+import { ObjectItem } from "mendix";
 
 import { TcSeatsioChartContainerProps } from "../typings/TcSeatsioChartProps";
 
@@ -87,6 +88,18 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
             sortBy: this.props.categoryFiltersSortBy
         };
 
+        // const customMessages = {
+        //     clickToFilterCategories: "Clica para filtrar a bagaça"
+        // };
+        type MessageStringRec = Record<string, string>;
+        const customMessages: MessageStringRec = {};
+
+        this.props.dynamicDataSource?.items?.forEach((item: ObjectItem) => {
+            const messageKey = this.props.MessageKeyAttribute?.get(item)?.value || "ignored";
+            const messageValue = this.props.MessageValueAttribute?.get(item).value || "ignored";
+            customMessages[messageKey] = messageValue;
+        });
+
         return (
             <SeatsioSeatingChart
                 workspaceKey={workspaceKey}
@@ -104,6 +117,7 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
                 holdToken={holdToken}
                 onObjectSelected={this.onObjectSelectedHandle}
                 onObjectDeselected={this.onObjectDeselectedHandle}
+                messages={customMessages}
             />
         );
     }
