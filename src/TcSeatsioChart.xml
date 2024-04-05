@@ -41,6 +41,13 @@
                     <attributeType name="String" />
                 </attributeTypes>
             </property>
+            <property key="filteredCategories" type="attribute" required="false">
+                <caption>Filtered Categories</caption>
+                <description>Leaves the specified categories normally visible, while making all others dimmed out. The array can be a list of category IDs or labels.</description>
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
         </propertyGroup>
 
         <propertyGroup caption="Custom Built-in texts">
@@ -100,6 +107,10 @@
                 <caption>On Change action</caption>
                 <description>Action to trigger when selected seats are changed</description>
             </property>
+            <property key="onChartRendered" type="action" required="false">
+                <caption>On Chart Rendered</caption>
+                <description>Action to trigger when seats are rendered</description>
+            </property>            
         </propertyGroup>
     </properties>
 </widget>

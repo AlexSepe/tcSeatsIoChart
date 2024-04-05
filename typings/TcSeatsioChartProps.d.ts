@@ -18,6 +18,7 @@ export interface TcSeatsioChartContainerProps {
     holdToken: DynamicValue<string>;
     pricing: DynamicValue<string>;
     selectedObjsList: EditableValue<string>;
+    filteredCategories?: EditableValue<string>;
     dynamicDataSource?: ListValue;
     MessageKeyAttribute?: ListAttributeValue<string>;
     MessageValueAttribute?: ListAttributeValue<string>;
@@ -26,6 +27,7 @@ export interface TcSeatsioChartContainerProps {
     categoryFiltersZoomOnSelect: boolean;
     categoryFiltersSortBy: CategoryFiltersSortByEnum;
     onChange?: ActionValue;
+    onChartRendered?: ActionValue;
 }
 
 export interface TcSeatsioChartPreviewProps {
@@ -42,6 +44,7 @@ export interface TcSeatsioChartPreviewProps {
     holdToken: string;
     pricing: string;
     selectedObjsList: string;
+    filteredCategories: string;
     dynamicDataSource: {} | { caption: string } | { type: string } | null;
     MessageKeyAttribute: string;
     MessageValueAttribute: string;
@@ -50,4 +53,5 @@ export interface TcSeatsioChartPreviewProps {
     categoryFiltersZoomOnSelect: boolean;
     categoryFiltersSortBy: CategoryFiltersSortByEnum;
     onChange: {} | null;
+    onChartRendered: {} | null;
 }

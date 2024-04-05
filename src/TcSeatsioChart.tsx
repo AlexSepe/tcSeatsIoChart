@@ -19,10 +19,17 @@ export const { format: formatPrice } = new Intl.NumberFormat("pt-BR", {
     currency: "BRL"
 });
 
+declare global {
+    interface Window {
+        _seatingChart: SeatingChart | any;
+    }
+}
+
 export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
     private chart: any;
     private readonly onObjectSelectedHandle = this.onObjectSelected.bind(this);
     private readonly onObjectDeselectedHandle = this.onObjectDeselected.bind(this);
+    private readonly onChartRenderedHandle = this.onChartRendered.bind(this);
 
     private updateSelectedSeats(): void {
         const chartCast = this.chart as SeatingChart;
@@ -72,6 +79,15 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
         this.updateSelectedSeats();
     }
 
+    private onChartRendered(createdChart: SeatingChart): void {
+        this.chart = createdChart;
+        window._seatingChart = createdChart;
+        console.log("onChartRendered -> object:: ", createdChart);
+        if (this.props.onChartRendered) {
+            this.props.onChartRendered.execute();
+        }
+    }
+
     render(): ReactNode {
         const pricingString = this.props.pricing.value || "[]";
         const workspaceKey = this.props.workspace_key.value || "workspace_key_undefined";
@@ -88,9 +104,6 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
             sortBy: this.props.categoryFiltersSortBy
         };
 
-        // const customMessages = {
-        //     clickToFilterCategories: "Clica para filtrar a bagaça"
-        // };
         type MessageStringRec = Record<string, string>;
         const customMessages: MessageStringRec = {};
 
@@ -109,11 +122,10 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
                 region="sa"
                 language="pt"
                 chartJsUrl={"https://cdn-sa.seatsio.net/chart.js"}
-                onChartRendered={createdChart => {
-                    this.chart = createdChart;
-                }}
+                onChartRendered={this.onChartRenderedHandle}
                 session="manual"
                 categoryFilter={categoryFilterOptions}
+                showFullScreenButton={false}
                 holdToken={holdToken}
                 onObjectSelected={this.onObjectSelectedHandle}
                 onObjectDeselected={this.onObjectDeselectedHandle}
