@@ -11,6 +11,7 @@ import {
     SeatingChart,
     SeatsioSeatingChart,
     SelectableObjectProps,
+    SelectionLimiter,
     TicketTypeJson
 } from "@seatsio/seatsio-react";
 
@@ -97,6 +98,9 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
         const pricing = JSON.parse(pricingString);
         console.log("render -> workspaceKey:: ", workspaceKey, " event::", event, " pricing::", pricing);
 
+        const maxSelectedObjectsString = this.props.maxSelectedObjects.value || "8";
+        const maxSelectedObjects = JSON.parse(maxSelectedObjectsString);
+
         const categoryFilterOptions = {
             enabled: this.props.categoryFiltersEnabled,
             multiSelect: this.props.categoryFiltersMultiSelect,
@@ -130,6 +134,7 @@ export class TcSeatsioChart extends Component<TcSeatsioChartContainerProps> {
                 onObjectSelected={this.onObjectSelectedHandle}
                 onObjectDeselected={this.onObjectDeselectedHandle}
                 messages={customMessages}
+                maxSelectedObjects={maxSelectedObjects as SelectionLimiter}
             />
         );
     }

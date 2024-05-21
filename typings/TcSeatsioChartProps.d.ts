@@ -19,6 +19,7 @@ export interface TcSeatsioChartContainerProps {
     pricing: DynamicValue<string>;
     selectedObjsList: EditableValue<string>;
     filteredCategories?: EditableValue<string>;
+    maxSelectedObjects: DynamicValue<string>;
     dynamicDataSource?: ListValue;
     MessageKeyAttribute?: ListAttributeValue<string>;
     MessageValueAttribute?: ListAttributeValue<string>;
@@ -45,6 +46,7 @@ export interface TcSeatsioChartPreviewProps {
     pricing: string;
     selectedObjsList: string;
     filteredCategories: string;
+    maxSelectedObjects: string;
     dynamicDataSource: {} | { caption: string } | { type: string } | null;
     MessageKeyAttribute: string;
     MessageValueAttribute: string;

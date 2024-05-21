@@ -48,6 +48,11 @@
                     <attributeType name="String" />
                 </attributeTypes>
             </property>
+            <property key="maxSelectedObjects" type="expression" required="true">
+                <caption>MaxSelectedObjects array list</caption>
+                <description>Array com max selected objs: https://docs.seats.io/docs/renderer/config-maxselectedobjects</description>
+                <returnType type="String" />
+            </property>
         </propertyGroup>
 
         <propertyGroup caption="Custom Built-in texts">
